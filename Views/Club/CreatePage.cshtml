@@ -1,0 +1,47 @@
+﻿@using BuildMVCTeddySmith.DatabaseStuff.Enum;
+@using BuildMVCTeddySmith.DatabaseStuff.Model;
+@model Club
+@{
+    ViewData["Title"] = "CreatePage";
+}
+<form method="post" asp-action="CreatePage" >
+  <div class="form-group">
+    <label asp-for="Title">Title</label>
+    <input asp-for="Title" type="text" class="form-control">
+    <span asp-validation-for="Title" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Description" >Description</label>
+    <input asp-for="Description" type="text" class="form-control" >
+     <span asp-validation-for="Description" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Image" >Image</label>
+    <input asp-for="Image" type="text" class="form-control" placeholder="image" >
+     <span asp-validation-for="Image" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="ClubCategory" >ClubCategory</label>
+    <select asp-for="ClubCategory" asp-items="@Html.GetEnumSelectList<ClubCategory>()">
+        <option> select stuff here</option>
+    </select>
+    <span asp-validation-for="ClubCategory"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Address.Street" >Address.Street</label>
+    <input asp-for="Address.Street" type="text" class="form-control" placeholder="" >
+     <span asp-validation-for="Image" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Address.City" >Address.City</label>
+    <input asp-for="Address.City" type="text" class="form-control" placeholder="" >
+     <span asp-validation-for="Image" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Address.State" >Address.State</label>
+    <input asp-for="Address.State" type="text" class="form-control" placeholder="dot" >
+     <span asp-validation-for="Image" class="text-danger"></span>
+  </div>
+  <button type="submit" class="btn btn-primary"  >Submit</button>
+</form>
+
