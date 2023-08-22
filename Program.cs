@@ -1,7 +1,9 @@
 using BuildMVCTeddySmith.Controllers;
 using BuildMVCTeddySmith.DatabaseStuff;
+using BuildMVCTeddySmith.Helpers;
 using BuildMVCTeddySmith.Interface;
 using BuildMVCTeddySmith.Repo;
+using BuildMVCTeddySmith.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,8 @@ builder.Services.AddDbContext<DatabaseContext>(option => {
 // this we inject the whole SERVICE directly instead of going through an interface and repo
 builder.Services.AddScoped<RaceRepository>();
 builder.Services.AddScoped<IClubRepository,ClubRepository>();
+builder.Services.AddScoped<IPhotoService, PhotoService>();
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 var app = builder.Build();
 
 
